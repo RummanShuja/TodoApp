@@ -1,0 +1,148 @@
+/* darkmode */
+/* Dark mode base */
+.darkMode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+/* Input field */
+.darkMode input,
+.darkMode .inputEdit {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    border: 1px solid #444;
+}
+
+/* Task List items */
+.darkMode .list-group-item {
+    background-color: #1e1e1e;
+    border-color: #333;
+    color: #f1f1f1;
+}
+
+/* Buttons */
+.darkMode .btn {
+    border: none;
+}
+
+.darkMode .btn-warning {
+    background-color: #ffb74d;
+    color: #000;
+}
+
+.darkMode .btn-danger {
+    background-color: #ef5350;
+    color: #fff;
+}
+
+.darkMode .btn-info {
+    background-color: #29b6f6;
+    color: #fff;
+}
+
+.darkMode .btn-secondary {
+    background-color: #757575;
+    color: #fff;
+}
+
+/* Edit container */
+.darkMode .editContainer {
+    background-color: #1e1e1e;
+    color: #f1f1f1;
+    border: 1px solid #444;
+    padding: 16px;
+    border-radius: 8px;
+}
+
+/* Confirmation box */
+.darkMode #confirmationBox,
+.darkMode #confirmationBox2,
+.darkMode .confirmationBox {
+    background-color: #1e1e1e;
+    color: #f1f1f1;
+    border: 1px solid #444;
+}
+
+.darkMode input:focus {
+    background-color: #333;
+    color: white;
+    border: 1px solid #777;
+    box-shadow: none; /* remove default glow if any */
+    outline: none;     /* remove blue outline if any */
+  }
+  
+.darkMode input::placeholder {
+    color: #aaa;
+}
+.darkMode button {
+    background-color: #444;
+    color: white;
+    border: 1px solid #666;
+  }
+  
+body, input, .list-group-item, .btn {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+
+
+
+
+
+
+.container {
+    width: 50vw !important;
+}
+#confirmationBox, #confirmationBox2 {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.editContainer {
+    background-color: whitesmoke;
+    position: fixed;
+    display: flex;
+    /* flex: 5; */
+    flex-direction: column;
+    flex-wrap: wrap; 
+    top: 50%;  left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 3rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    align-items: center;
+   
+}
+.inputEdit{
+    border: 1px solid blue;
+    /* background-color: rgba(193, 216, 134, 0.566); */
+    border-radius: 20px;
+    margin-bottom: 1rem;
+}
+.btnContainer {
+    display: flex;
+    justify-content: space-around;
+    width: 70%;
+    /* border: 1px solid yellow; */
+}
+.cancelEditBtn{
+    border: 1px solid grey;
+    font-weight: lighter;
+    border-radius: 20px;
+    /* margin-right: 1.5rem; */
+}
+.saveEditBtn{
+    border: 1px solid black;
+    font-weight: 400;
+    border-radius: 20px;
+    /* margin-right: 1.5rem; */
+}
+
