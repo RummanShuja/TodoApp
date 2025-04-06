@@ -1,7 +1,3 @@
-Perfect! Here's a customized `README.md` just for you, under your GitHub username `RummanShuja`.
-
----
-
 ```markdown
 # 📝 Todo List App
 
@@ -66,5 +62,3 @@ git add README.md
 git commit -m "Added custom README"
 git push
 ```
-
-Want to include a screenshot now or do that later?
