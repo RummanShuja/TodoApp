@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
     //dark mode
     let toggle = document.querySelector(".toggle");
+    let darkModeBtn = document.querySelector(".dark-mode-btn");
     // let darkMode = false;
     
     //dark mode (default from the local storage) (irrespective of the page)
@@ -75,8 +76,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
                 let itemContainer = document.createElement("li");
                 itemContainer.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
+                itemContainer.setAttribute("draggable",true);
                 list.appendChild(itemContainer);
-        
+                
                 // Task Text
                 let item = document.createElement("span");
                 item.classList.add("w-75");
@@ -161,6 +163,44 @@ document.addEventListener("DOMContentLoaded", ()=>{
                     filterr();
                     displayTask();
                 });
+
+                //drag drop feature
+                itemContainer.addEventListener("dragstart", (e)=>{
+                    e.dataTransfer.setData("text/plain",index);
+                    console.log("dragged index = ",tasks[e.dataTransfer.getData("text/plain")]);
+                    e.target.classList.add("dragging");
+                });
+                itemContainer.addEventListener("dragover", (e)=>{
+                    e.preventDefault();//allow drop
+                    e.target.classList.add("drag-over");
+                });
+                itemContainer.addEventListener("dragleave",(e)=>{
+                    e.target.classList.remove("drag-over");
+                    e.target.classList.remove("dragging");
+                });
+                itemContainer.addEventListener("drop",(e)=>{
+                    e.preventDefault();
+                    const draggedIndex = e.dataTransfer.getData("text/plain");
+                    const targetIndex = index;
+                    if(draggedIndex!==targetIndex.toString()){
+                        const temp = tasks[draggedIndex];
+                        console.log("dragged= ",tasks[draggedIndex]);
+                        console.log("target= ",tasks[targetIndex]);
+                        tasks.splice(draggedIndex,1);
+                        tasks.splice(targetIndex,0,temp);
+                        localStorage.setItem("tasks",JSON.stringify(tasks));
+                        
+                    }
+                    displayTask();
+                });
+                itemContainer.addEventListener("dragend", (e) => {
+                    document.querySelectorAll(".drag-over").forEach(el =>
+                        el.classList.remove("drag-over")
+                    );
+                    document.querySelectorAll(".dragging").forEach(el =>
+                        el.classList.remove("dragging")
+                    );
+                });
             });
             
             if(tasks.length===0){
@@ -198,7 +238,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
         });
     
         //dark mode
-        toggle.addEventListener("click",()=>{
+        darkModeBtn.addEventListener("click",()=>{
             darkMode = ! darkMode;
             toggle.classList.toggle("fa-toggle-off", !darkMode);
             toggle.classList.toggle("fa-toggle-on", darkMode);
@@ -255,7 +295,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
             
         });
         //dark mode
-        toggle.addEventListener("click",()=>{
+        darkModeBtn.addEventListener("click",()=>{
             darkMode = ! darkMode;
             toggle.classList.toggle("fa-toggle-off", !darkMode);
             toggle.classList.toggle("fa-toggle-on", darkMode);

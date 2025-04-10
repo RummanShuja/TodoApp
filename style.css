@@ -146,3 +146,10 @@ body, input, .list-group-item, .btn {
     /* margin-right: 1.5rem; */
 }
 
+/* drag and drop feature css */
+.dragging {
+    opacity: 0.7;
+}
+.drag-over {
+    border: 2px dashed #aaa;
+}
